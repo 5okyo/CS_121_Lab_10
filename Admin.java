@@ -4,7 +4,7 @@ public class Admin extends User {
         super("admin", "9999");
     }
 
-    @Override
+
     public String menu() {
         return "\nAdmin Menu\n\n"
              + "0) Exit this menu\n"
@@ -14,12 +14,12 @@ public class Admin extends User {
              + "Action: ";
     }
 
-    @Override
+
     public void start() {
         System.out.print(menu());
     }
 
-    @Override
+
     public String getReport() {
         return "Administrator: " + getUserName();
     }
