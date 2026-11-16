@@ -7,6 +7,7 @@ classDiagram
     }
 
     class CheckingAccount {
+        <<Serializable>>
         -balance: double
         +CheckingAccount()
         +CheckingAccount(balance)
@@ -43,7 +44,14 @@ classDiagram
         +getReport()* String
     }
 
+    class Admin {
+        +Admin()
+        +menu() String
+        +getReport() String
+    }
+
     class Customer {
+        <<Serializable>>
         -checking: CheckingAccount
         -savings: SavingsAccount
         +main() void
@@ -54,8 +62,28 @@ classDiagram
         +getReport() String
     }
 
+    class Bank {
+        -admin: Admin
+        -customers: ArrayList
+        +Bank()
+        +main() void
+        +loadSampleCustomers() void
+        +loadCustomers() void
+        +saveCustomers() void
+        +fullCustomerReport() void
+        +addUser() void
+        +applyInterest() void
+        +loginAsCustomer() void
+        +menu() void
+        +start() void
+        +startAdmin() void
+    }
+
     HasMenu <|.. CheckingAccount : Implements
     HasMenu <|.. User : Implements
     CheckingAccount <|-- SavingsAccount : Extends
+    User <|-- Admin : Extends
     User <|-- Customer : Extends
+    Bank "1" o--> Admin
+    Bank "n" o--> Customer
 ```
