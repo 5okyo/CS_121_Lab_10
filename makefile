@@ -1,29 +1,37 @@
+all: Bank.class
+
+Bank.class: Bank.java Admin.class Customer.class HasMenu.class
+	javac -g Bank.java
+
+Admin.class: Admin.java User.class
+	javac -g Admin.java
+
 Customer.class: Customer.java User.class CheckingAccount.class SavingsAccount.class
- javac -g Customer.java
+	javac -g Customer.java
 
 User.class: User.java HasMenu.class
- javac -g User.java
+	javac -g User.java
 
 CheckingAccount.class: CheckingAccount.java HasMenu.class
- javac -g CheckingAccount.java
+	javac -g CheckingAccount.java
 
 SavingsAccount.class: SavingsAccount.java CheckingAccount.class
- javac -g SavingsAccount.java
+	javac -g SavingsAccount.java
 
 HasMenu.class: HasMenu.java
- javac -g HasMenu.java
+	javac -g HasMenu.java
 
-testAdmin: Admin.class
- java Admin
+testBank: Bank.class
+	java Bank
 
 testCustomer: Customer.class
- java Customer
+	java Customer
 
 testChecking: CheckingAccount.class
- java CheckingAccount
+	java CheckingAccount
 
 testSavings: SavingsAccount.class
- java SavingsAccount
+	java SavingsAccount
 
 clean:
- rm *.class
+	rm -f *.class
